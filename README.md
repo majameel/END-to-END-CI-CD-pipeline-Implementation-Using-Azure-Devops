@@ -28,5 +28,5 @@ Creating AKS cluster on Azure
 Configuring Virtual Machine Scale Sets as Node pools in AKS
 
 
-![image](https://github.com/user-attachments/assets/442f9054-1dcd-4e64-8378-a0419e4f9c9e)
 
+![image](https://github.com/user-attachments/assets/b438e994-9e7e-42e5-b5c5-9dd00499a279)
