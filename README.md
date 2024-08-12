@@ -8,6 +8,9 @@ A Redis which collects new votes
 A .NET worker which consumes votes and stores them
 A Postgres database backed by a Docker volume
 A Node.js web app which shows the results of the voting in real time
+
+![image](https://github.com/user-attachments/assets/2d8389f1-df83-4bf6-be3e-ec1ae314d685)
+
 Azure DevOps - CI Setup
 
 Cloning the Project Repo to Azure Devops
@@ -23,6 +26,7 @@ Implementing Continuous Deployment (CD)
 Using AKS for CD
 Creating AKS cluster on Azure
 Configuring Virtual Machine Scale Sets as Node pools in AKS
-Hands on sessions on AKS
-End to End CI/CD Demonstration
-Image
+
+
+![image](https://github.com/user-attachments/assets/442f9054-1dcd-4e64-8378-a0419e4f9c9e)
+
