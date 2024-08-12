@@ -1,0 +1,74 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+  paths:
+    include:
+      - vote/*
+
+resources:
+  - repo: self
+
+variables:
+  dockerRegistryServiceConnection: '028003a7-62cf-47f1-948b-78c3c778eef5'
+  imageRepository: 'ciprojectvotingapplication'
+  containerRegistry: 'ciproject.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
+  tag: '$(Build.BuildId)'
+  system.debug: true
+
+pool:
+  name: azureagent
+
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'build'
+        Dockerfile: 'vote/Dockerfile'
+        tags: '$(tag)'
+
+- stage: Stage
+  displayName: Stage
+  jobs:
+  - job: Stage
+    displayName: Stage
+    steps:
+    - task: Docker@2
+      displayName: Push image to container registry
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'push'
+        tags: '$(tag)'
+
+- stage: Update
+  displayName: Update
+  jobs:
+  - job: Update
+    displayName: Update
+    steps:
+    - script: |
+        sudo yum update
+        sudo yum install dos2unix -y
+        dos2unix /home/azureuser/myagent/_work/2/s/scripts/updatek8smanifest.sh
+      displayName: 'Install pkgs and convert line endings'
+      
+    - script: |
+        chmod +x /home/azureuser/myagent/_work/2/s/scripts/updatek8smanifest.sh
+      displayName: 'Make Script Executable'
+      
+    - task: ShellScript@2
+      inputs:  
+        scriptPath: '/home/azureuser/myagent/_work/2/s/scripts/updatek8smanifest.sh'
+        args: '$(tag)'  # Pass the image tag as an argument
+
