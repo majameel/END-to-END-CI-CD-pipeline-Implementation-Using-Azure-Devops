@@ -30,3 +30,8 @@ Configuring Virtual Machine Scale Sets as Node pools in AKS
 
 
 ![image](https://github.com/user-attachments/assets/b438e994-9e7e-42e5-b5c5-9dd00499a279)
+
+
+<h1> Pipeline Stages </h1>
+
+![image](https://github.com/user-attachments/assets/a4df0075-6016-4d9b-902c-3a801b621b0d)
