@@ -43,3 +43,6 @@ The shell script updates the image tag in the deployment YAML file with the late
 ## Pipeline Stages
 
 ![Pipeline Stages](https://github.com/user-attachments/assets/a4df0075-6016-4d9b-902c-3a801b621b0d)
+
+## Detailed Blog link 
+https://medium.com/@majameeljameey/azure-devops-end-to-end-ci-cd-pipeline-implementation-ef1a52816734
