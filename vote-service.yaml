@@ -11,7 +11,7 @@ resources:
   - repo: self
 
 variables:
-  dockerRegistryServiceConnection: '028003a7-62cf-47f1-948b-78c3c778eef5'
+  dockerRegistryServiceConnection: <conntection>
   imageRepository: 'ciprojectvotingapplication'
   containerRegistry: 'ciproject.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
